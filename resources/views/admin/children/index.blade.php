@@ -15,6 +15,37 @@
 
                 <div class="card-body">
                    Children Controller
+                   <hr>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Guardian</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach($children as $child)
+    <tr>
+      <th>{{$child->id}}</th>
+      <td>{{$child->name}}</td>
+      <td> {{$child->guardian->name}}</td>
+      <td>
+        
+ {{$child->age}} 
+      </td>
+    </tr>
+   @endforeach
+  </tbody>
+</table>
+
+
+
+
+                   {{--$children--}}
                 </div>
             </div>
         </div>

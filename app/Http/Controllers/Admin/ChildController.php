@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Child;
 
 class ChildController extends Controller
 {
@@ -15,10 +16,10 @@ class ChildController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-    $role = $user->getRoleNames()->first();
+        $children = Child::with('guardian')->get();
 
-        return view('admin.children.index', ['role' => $role]); 
+
+        return view('admin.children.index', compact('children')); 
     }
 
     /**

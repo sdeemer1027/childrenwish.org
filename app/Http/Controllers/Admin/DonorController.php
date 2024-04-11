@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class DonorController extends Controller
 {
@@ -15,10 +17,10 @@ class DonorController extends Controller
      */
     public function index()
     {
-          $user = Auth::user();
-    $role = $user->getRoleNames()->first();
+         $users = User::role('donor')->get();
+   
 
-        return view('admin.donors.index', ['role' => $role]); 
+        return view('admin.donors.index', compact('users'));
     }
 
     /**

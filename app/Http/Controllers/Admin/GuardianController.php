@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guardian;
 use App\Models\User;
-
-
+use App\Models\Child;
+use App\Models\Role;
+use App\Models\User;
 
 class GuardianController extends Controller
 {
@@ -21,13 +22,13 @@ class GuardianController extends Controller
     {
  
     
-        $users = User::role('guardian')->with('guardian')->get();
+//        $users = User::role('guardian')->with('guardian')->get();
 
-        $guardians = Guardian::with('user')->get();
+        $guardians = Guardian::with('user','children')->get();
 
 
 
-        return view('admin.guardians.index', compact('guardians','users')); 
+        return view('admin.guardians.index', compact('guardians')); //,'users')); 
     }
 
     /**

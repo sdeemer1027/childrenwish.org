@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\WishController;
 use App\Http\Controllers\Admin\ChildController;
 use App\Http\Controllers\Admin\DonorController;
 use App\Http\Controllers\Admin\GuardianController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,11 @@ use App\Http\Controllers\Admin\GuardianController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', [HomeController::class, 'welcomindex']);
 
 Auth::routes();
 

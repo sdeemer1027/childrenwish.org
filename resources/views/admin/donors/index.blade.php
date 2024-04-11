@@ -14,6 +14,41 @@
 
                 <div class="card-body">
                   Donors Controller
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">email</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach($users as $user)
+    <tr>
+      <th>{{$user->id}}</th>
+      <td>{{$user->name}}</td>
+      <td> {{$user->email}}</td>
+      <td>
+        
+ {{$user->phone}} 
+      </td>
+    </tr>
+   @endforeach
+  </tbody>
+</table>
+
+
+
+
+
+
+
+                  {{--$users--}}
                 </div>
             </div>
         </div>
