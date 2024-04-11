@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Guardian;
+use App\Models\User;
+
+
 
 class GuardianController extends Controller
 {
@@ -14,7 +19,15 @@ class GuardianController extends Controller
      */
     public function index()
     {
-        //
+ 
+    
+        $users = User::role('guardian')->with('guardian')->get();
+
+        $guardians = Guardian::with('user')->get();
+
+
+
+        return view('admin.guardians.index', compact('guardians','users')); 
     }
 
     /**

@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\WishController;
+use App\Http\Controllers\Admin\ChildController;
+use App\Http\Controllers\Admin\DonorController;
+use App\Http\Controllers\Admin\GuardianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +25,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
-    Route::get('/wishes', 'Admin\WishController@index')->name('wishes.index');
-    Route::get('/children', 'Admin\ChildController@index')->name('children.index');
-    Route::get('/donors', 'Admin\DonorController@index')->name('donors.index');
-    Route::get('/guardians', 'Admin\GuardianController@index')->name('guardians.index');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth', 'admin'], function () {
+    Route::get('/wishes', [WishController::class , 'index'])->name('wishes.index');
+    Route::get('/children', [ChildController::class , 'index'])->name('children.index');
+    Route::get('/donors', [DonorController::class , 'index'])->name('donors.index');
+    Route::get('/guardians', [GuardianController::class , 'index'])->name('guardians.index');
     // Other admin routes
 });

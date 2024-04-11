@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class WishController extends Controller
 {
@@ -14,7 +16,11 @@ class WishController extends Controller
      */
     public function index()
     {
-        //
+        
+    $user = Auth::user();
+    $role = $user->getRoleNames()->first();
+
+        return view('admin.wishes.index', ['role' => $role]); 
     }
 
     /**
