@@ -33,8 +33,8 @@ return new class extends Migration
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
             $table->date('birth_date')->nullable();
-
-
+            $table->string('stripe_id')->nullable();
+            $table->string('stripe_token')->nullable();
 
 
 

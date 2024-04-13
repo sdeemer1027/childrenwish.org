@@ -36,6 +36,8 @@ class User extends Authenticatable
         'lng',
         'birth_date',
         'phone',
+        'stripe_id',
+        'stripe_token'
     ];
 
     /**

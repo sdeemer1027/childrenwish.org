@@ -1,12 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    /* Custom styles for the carousel */
+    #carouselExampleSlidesOnly {
+        max-height: 500px; /* Limit the maximum height */
+        overflow: hidden; /* Hide overflow content */
+    }
+
+    .carousel-inner .carousel-item img {
+        max-height: 500px; /* Limit image height */
+        object-fit: cover; /* Ensure the image covers the entire carousel item */
+}
+.mission-bg {
+    background-color: #15e5c6; /* Green color */
+
+    }
+</style>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/child-2443969_1280.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/hands-2274254_1280.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/pexels-photo-1001914.webp" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+
 <div class="container">
+
 
     <div class="row justify-content-center">
 <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Our Mission</div>
+                <div class="card-header mission-bg"><h3>Our Mission</h3></div>
 
                 <div class="card-body">
                     At childrenwish.org, our mission is to bring joy and hope to the lives of children facing challenging circumstances. From foster children to those battling terminal illnesses, we believe that every child deserves a chance to dream and experience moments of happiness. Through your generosity and support, we aim to fulfill their wishes, creating lasting memories and spreading love and positivity. Join us in making a difference in the lives of these extraordinary children
@@ -14,7 +46,7 @@
             </div>
         </div>
 </div>
-<BR><BR>
+<BR>
 
     <div class="row justify-content-center">
 

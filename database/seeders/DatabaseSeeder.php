@@ -9,10 +9,12 @@ use Spatie\Permission\Models\Permission;
 use App\Models\User;
 use App\Models\Guardian;
 use App\Models\Child;
-
+use Illuminate\Support\Arr;
+use App\Models\Wish;
+use App\Models\WishCategory;
 use Faker\Factory as Faker;
-
-
+use Carbon\Carbon;
+//use DateTime;
 
 class DatabaseSeeder extends Seeder
 {
@@ -131,6 +133,7 @@ $faker = Faker::create();
                'name' => $faker->name,
                'email' => $faker->unique()->safeEmail,
                'password' => bcrypt('password'), // Replace with a secure password
+               'phone' => $faker->numerify('(###) ###-####'), // USA-based phone number format
                 // Add other fields as needed
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -148,17 +151,25 @@ $faker = Faker::create();
             // Create the specified number of children
             for ($i = 0; $i < $numberOfChildren; $i++) {
                 $faker = \Faker\Factory::create();
+$theage = rand(3, 17); // Random age between 3 to 17
+// Get the current date
+//$expires = Carbon::now()->addWeeks(2)->format('Y-m-d');
+//$currentDate = Carbon::now()->addWeeks(2)->format('Y-m-d'); //new DateTime();
+
+// Subtract the random age from the current year
+//$currentDate->modify("-{$theage} years");
+
+// Format the birth date
+//$birth_date = $currentDate->format('Y-m-d');
+$birth_date = Carbon::now()->subYears($theage)->format('Y-m-d');
+
                 Child::create([
                     'guardian_id' => $guardian->id,
-                    'name' => $faker->name,
-                    'age' => rand(3, 17), // Random age between 3 to 17
+                    'name' => $faker->firstName,
+                    'age' => $theage, 
+                    'birth_date' => $birth_date,
                 ]);
             }
-
-
-
-
-
 
         }
 
@@ -170,16 +181,52 @@ $faker = Faker::create();
 
 
 
+ // Get all children
+        $children = Child::all();
 
+        // Define wish items
+        $wishItems = [
+            ['name' => 'Crayons', 'value' => 5.99, 'catergory_id' => 4,'description' => 'A varity of colors for your everyday coloring needs'],
+            ['name' => 'Coloring Book', 'value' => 10.99,  'catergory_id' => 4,'description' => 'A fun coloring book for kids'],
+            ['name' => 'Bicycle', 'value' => 150.00,  'catergory_id' => 6, 'description' => 'A brand new bicycle for outdoor adventures'],
+            ['name' => 'Desk', 'value' => 350.00,  'catergory_id' => 2, 'description' => 'A Desk for your all time learning adventures'],
+            // Add more wish items as needed
+        ];
 
+       
+        foreach ($children as $child) {
+            // Randomly determine the number of wish items (1 or 2) for each child
+            $numWishItems = rand(1, 2);
 
+            // Shuffle the $wishItems array to randomize the selection
+            shuffle($wishItems);
 
+            // Take a slice of the shuffled array to get the random wish items for this child
+            $randomWishItems = array_slice($wishItems, 0, $numWishItems);
 
+            foreach ($randomWishItems as $wishItemData) {
 
+$expires = Carbon::now()->addWeeks(2)->format('Y-m-d');
+$value = $wishItemData['value'];
+$increasePercent = 0.10; // 10% increase
+$increasedValue = $value * (1 + $increasePercent);
 
-
-
-
+                Wish::create([
+                    'child_id' => $child->id,
+                    'name' => $wishItemData['name'],
+                    'value' => $increasedValue,
+                    'category_id' => $wishItemData['catergory_id'],
+                    'description'  => $wishItemData['description'],
+                    'expiration_date' =>  $expires,
+                    'originalvalue' => $wishItemData['value'],
+                ]);
+        
+                // Break the loop if the maximum number of wishes per child is reached
+                if (--$numWishItems <= 0) {
+                    break;
+                }
+            }
+        }
 
 
 

@@ -19,6 +19,12 @@ return new class extends Migration
         $table->foreign('guardian_id')->references('id')->on('guardians')->onDelete('cascade'); // Define foreign key
         $table->string('name');
         $table->integer('age');
+        $table->timestamp('birth_date')->nullable(); 
+        // type is foster or child
+        $table->string('type')->nullable();
+        $table->string('illness')->nullable();
+        $table->string('active')->nullable();
+        
         $table->timestamps();
     });
     }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Wish;
+use App\Models\WishCategory;
 
 
 class WishController extends Controller
@@ -16,12 +18,19 @@ class WishController extends Controller
      */
     public function index()
     {
-        
-    $user = Auth::user();
-    $role = $user->getRoleNames()->first();
+  
+      $wishes = Wish::with('category','child','child.guardian')->paginate(25); //->get();  
+//    $user = Auth::user();
+//    $role = $user->getRoleNames()->first();
 
-        return view('admin.wishes.index', ['role' => $role]); 
+        return view('admin.wishes.index', compact('wishes')); 
     }
+    
+    public function getWishes(Request $request)
+{
+    $wishes = Wish::with('category', 'child', 'child.guardian')->get();
+    return datatables()->of($wishes)->toJson();
+}
 
     /**
      * Show the form for creating a new resource.

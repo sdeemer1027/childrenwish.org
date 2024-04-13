@@ -17,8 +17,13 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('child_id');
         $table->foreign('child_id')->references('id')->on('children')->onDelete('cascade');
+        $table->string('name');       
+       $table->decimal('originalvalue', 10, 2); // 10 total digits, 2 decimal places
+       $table->decimal('value', 10, 2); // 10 total digits, 2 decimal places
+
         $table->text('description');
         $table->boolean('fulfilled')->default(false);
+        $table->timestamp('expiration_date')->nullable(); 
         // Add other fields as needed
         $table->timestamps();
     });

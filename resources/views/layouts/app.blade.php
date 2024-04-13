@@ -9,11 +9,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+<!-- link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" -->
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -36,6 +38,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Our Guardians</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Become Donor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('publicwish') }}">Wishes</a>
+                                </li>
+
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -61,6 +74,13 @@
                                 </a>
      
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="{{ route('home') }}" >
+                                        Dashboard
+                                    </a>
+
+
+
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -84,8 +104,15 @@
 
             @yield('content')
         </main>
-    </div>
-    <script src="{{ asset('js/app.js') }}"></script>
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">&copy;ChildrenWish.org</span>
+    <span class="text-muted" style="float: right;">Powered By Dr.Steve@Steven.News</span>
+  </div>
+</footer>
 
+
+    </div>
+  
 </body>
 </html>

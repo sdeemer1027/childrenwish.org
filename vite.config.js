@@ -11,4 +11,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    css:{
+         // Import Font Awesome CSS globally
+        code: `import '@fortawesome/fontawesome-free/css/all.css';`,
+    }
 });
