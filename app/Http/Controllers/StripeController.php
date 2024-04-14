@@ -14,22 +14,17 @@ class StripeController extends Controller
 
 public function addCard(Request $request){
 
-
-//dd($request);
-
 // Get the token from the request
     $token = $request->input('token');
-$customerId = $request->input('customerId');
+    $customerId = $request->input('customerId');
 
+//dd($request);
 
     // Set your Stripe API key
     Stripe::setApiKey(env('STRIPE_SECRET'));
 
     try {
         // Create a new Stripe customer and attach the card using the token
-//        $customer = Customer::create([
-//            'source' => $token,
-//        ]);
 
 $customer = Customer::update(
             $customerId,
@@ -48,8 +43,6 @@ $customer = Customer::update(
         return response()->json(['error' => 'An error occurred while adding the card.'], 500);
     }
 
-
-//return ;
 
 }
 

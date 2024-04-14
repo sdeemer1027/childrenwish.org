@@ -87,7 +87,7 @@ public function welcomindex()
 public function publicwish(){
 
  $wishes = Wish::with('child')
-  ->orderBy('expiration_date', 'asc')
+  ->orderBy('expiration_date', 'asc')->where('fulfilled',0)
   ->paginate(24); //->get();
 $category = WishCategory::all();
 
@@ -104,7 +104,7 @@ public function getWishesByCategory($catis)
         $wishes = Wish::whereHas('category', function ($query) use ($catis) {
             $query->where('id', $catis);
         })
-         ->orderBy('expiration_date', 'asc')
+         ->orderBy('expiration_date', 'asc')->where('fulfilled',0)
         ->paginate(24); //->get();
 
 return view('publicwishes', compact('wishes','category'));

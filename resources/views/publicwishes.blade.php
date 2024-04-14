@@ -84,6 +84,15 @@
                       <div class="card-body">
                         {{$wish->child->name}} Age: ({{$wish->child->age}})<hr>Created : {{$wish->created_at->format('M-d-Y')}}  Valued At : ${{$wish->value}}<BR>                        
                         {!! $wish->description !!}
+@if(auth()->check())
+    <form action="{{ route('cart.add', $wish->id) }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
+@else
+    <p>Please <a href="{{ route('login') }}">log in</a> to add this item to your cart.</p>
+@endif
+                        
                       </div>
                      </div>
 

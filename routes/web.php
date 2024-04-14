@@ -11,6 +11,7 @@ use App\Http\Controllers\ChildWishController;
 use App\Http\Controllers\DonorsController;
 use App\Http\Controllers\CreditCardController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,14 @@ Route::get('/', [HomeController::class, 'welcomindex']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/public-wishes', [HomeController::class, 'publicwish'])->name('publicwish');
 Route::get('/public-wishes/{catis}', [HomeController::class, 'getWishesByCategory'])->name('category.wishes');
+
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove');
+
 
 
 Auth::routes();

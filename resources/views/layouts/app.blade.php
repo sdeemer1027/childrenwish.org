@@ -38,6 +38,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+     <li class="nav-item"><a class="nav-link" href="{{route('cart.index')}}"><i class="fa-solid fa-cart-plus"></i></a></li>
+                         <li class="nav-item">
+                                    <a class="nav-link" href="{{route('credit-card.check')}}">credit-card</a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Our Guardians</a>
                                 </li>

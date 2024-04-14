@@ -3,18 +3,14 @@
 
 @section('content')
 
-<script src="https://js.stripe.com/v3/"></script>
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
 {{$customer}}
 <HR>
-{{-- $card --}}
-
+{{$card}}
 <HR>
+{{$paymentMethods}}
+<HR>
+<script src="https://js.stripe.com/v3/"></script>
+
 
 
  <form id="addCardForm">
@@ -76,19 +72,4 @@
 {{$customer->id}}
 
 
-
-<pre>
-Visa    4242424242424242    Any 3 digits    Any future date
-Visa (debit)    4000056655665556    Any 3 digits    Any future date
-Mastercard  5555555555554444    Any 3 digits    Any future date
-Mastercard (2-series)   2223003122003222    Any 3 digits    Any future date
-Mastercard (debit)  5200828282828210    Any 3 digits    Any future date
-Mastercard (prepaid)    5105105105105100    Any 3 digits    Any future date
-</pre>
-
-{{$account}}
-
-</div>
-</div>
-</div>
 @endsection
