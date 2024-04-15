@@ -27,9 +27,8 @@ $total = 0; // Initialize the total variable
   <tbody>
   	@foreach($cartitems as $cartitem)
     <tr>
-      <th scope="row">{{$cartitem->id}}</th>
-      <td>{{$cartitem->wish_id}} {{$cartitem->wish->name}}</td>
-      
+      <th scope="row"></th>
+      <td>{{$cartitem->wish->name}}</td>      
       <td>{{$cartitem->wish->child->name}}</td>
       <td>{{$cartitem->quantity}}</td>
       <td>{{$cartitem->wish->value}}</td>
