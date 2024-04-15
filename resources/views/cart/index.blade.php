@@ -10,7 +10,9 @@
                 <div class="card-header">Your Shopping Cart</div>
 
                 <div class="card-body">
-                   
+            @php
+$total = 0; // Initialize the total variable
+@endphp       
 
 <table class="table">
   <thead>
@@ -33,6 +35,22 @@
       <td>{{$cartitem->wish->value}}</td>
     </tr>
     @endforeach
+    @foreach($cartitems as $cartitem)
+    @php
+    $total += $cartitem->wish->value; // Add each wish value to the total
+    @endphp
+    {{--$cartitem->wish->value--}} {{-- Display individual wish value --}}
+@endforeach
+
+ 
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Grand Total:</td>
+      <td>{{$total}} {{-- Display the grand total --}}</td>
+    </tr>
   </tbody>
 </table>
 
