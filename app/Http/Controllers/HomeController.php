@@ -76,10 +76,11 @@ public function welcomindex()
         }
 
         $childCount = Child::count();
-        $wishCount = Wish::count();
+        $wishCount = Wish::where('fulfilled',0)->count();
         $guardianCount = Guardian::count();
+        $wishFilledCount = Wish::where('fulfilled',1)->count();
 
-        return view('welcome', compact( 'donorCount', 'guardianCount' ,'childCount', 'wishCount'));
+        return view('welcome', compact( 'donorCount', 'guardianCount' ,'childCount', 'wishCount','wishFilledCount'));
     }
 
 

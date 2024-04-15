@@ -144,7 +144,10 @@ Emphasize the importance of empathy, understanding, and ongoing support for chil
                   Donors : {{ $donorCount }} <BR>
                   Guardians : {{ $guardianCount }}<BR>
                   Children : {{ $childCount }} <BR>
-                  WISHES :  {{ $wishCount }}<BR><BR>
+                  WISHES :  {{ $wishCount }}<BR>
+                  Wishes Filled : {{ $wishFilledCount }}<br>
+
+                  <BR><BR>
 
                          </div>
             </div>
