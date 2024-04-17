@@ -190,6 +190,15 @@ $birth_date = Carbon::now()->subYears($theage)->format('Y-m-d');
             ['name' => 'Coloring Book', 'value' => 10.99,  'catergory_id' => 4,'description' => 'A fun coloring book for kids'],
             ['name' => 'Bicycle', 'value' => 150.00,  'catergory_id' => 6, 'description' => 'A brand new bicycle for outdoor adventures'],
             ['name' => 'Desk', 'value' => 350.00,  'catergory_id' => 2, 'description' => 'A Desk for your all time learning adventures'],
+
+            ['name' => 'Clothes', 'value' => 150, 'catergory_id' => 5,'description' => 'every child needs new clothes for a child to get a new pair of sox or shirt might be a gift they rather not have but to a foster child it is the difference from a frown to a Smile'],
+            ['name' => 'Blankets', 'value' => 24.99,  'catergory_id' => 5,'description' => 'A Blanket might seem like a gag gift to a child but to a foster child in need of the cover to let them know tomorrow can be better is a gift we can sleep on '],
+            ['name' => 'Pillows', 'value' => 10.99,  'catergory_id' => 5, 'description' => 'Pillows are the comfort of dreams lets help the children dream a little dream and bring hope to a bigger tomorrow'],
+            ['name' => 'Jeans to Shirts', 'value' => 250.00,  'catergory_id' => 5, 'description' => 'making a child dress for the future can bring joy to everyone whom see them.'],
+
+
+
+
             // Add more wish items as needed
         ];
 

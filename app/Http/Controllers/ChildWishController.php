@@ -71,6 +71,7 @@ $increasedValue = $value * (1 + $increasePercent);
            'value' => $increasedValue,  
            'category_id' => $validatedData['category_id'],
            'expiration_date' =>  $validatedData['expiration_date'],
+           'originalvalue' => $value,
 
         ]);
 

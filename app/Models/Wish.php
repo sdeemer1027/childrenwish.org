@@ -20,6 +20,7 @@ protected $fillable = [
         'category_id',
         'expiration_date',
 'fulfilled',
+'originalvalue',
     ];
 
 
