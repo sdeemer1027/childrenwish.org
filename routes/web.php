@@ -40,6 +40,12 @@ Route::post('/cart/add/', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove');
 
+// routes/web.php
+Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
+// routes/web.php
+Route::get('/checkout/success', [StripeController::class, 'checkoutSuccess'])->name('checkout.success');
+Route::get('/checkout/cancel', [StripeController::class, 'checkoutCancel'])->name('checkout.cancel');
+
 
 
 Auth::routes();

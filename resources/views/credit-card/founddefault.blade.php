@@ -7,7 +7,10 @@
 <HR>
 {{$card}}
 <HR>
-{{$paymentMethods}}
+{{$paymentMethods}}<HR>
+@foreach($paymentMethods as $paymentMethod)
+{{$paymentMethod}}
+@endforeach
 <HR>
 <script src="https://js.stripe.com/v3/"></script>
 
